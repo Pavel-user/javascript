@@ -1,149 +1,5 @@
-/*let money, time;
-function start(){
-     money = +prompt('Ваш бюджет за месяц?','');
-     time = prompt('Введите дату в формате YYYY-MM-DD','');
-     while(isNaN(money) || money == '' || money == null) {
-        money = +prompt('Ваш бюджет за месяц?','');
+'use strict';
 
-     }
-
-}
-
-start();
-
-
-
-
-
-let appData = { 
-                budjet: money,
-                timeDate: time,
-                expenses: {},
-                optionalExpenses: {},
-                income: [],
-                savings: false
-
-
-};
-
-function chooseExpenses (){
-    for( let i=0; i<2; i++) {
-        let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
-        b = prompt("Во сколько обойдется?", '');
-        if( (typeof(a)==='string') &&(typeof(a) !=null) && (typeof(b) !=null) && a !='' && b !='' && a.length<50){
-            console.log('все хорошо');
-            appData.expenses[a] = b;
-        }  else  { 
-            i=i-1;
-            
-        }
-    
-    }
-
-}
-
-chooseExpenses();
-
-
-
-
-appData.fistDay=(appData.budjet / 30).toFixed();
- 
-alert("ежедневный доход= " + appData.fistDay);
-
-if(appData.fistDay < 100){
-    console.log("Мало");
-} else if(appData.fistDay > 100 && appData.fistDay < 1000) {
-    console.log("Нормально");
-} else{
-    console.log("Ты в своем уме?");
-}
-
-function checkSavings(){
-    if(appData.savings==true){
-        let save =+prompt("Какова сумма накоплений?"),
-            procent =+prompt("Какой процент?");
-
-            appData.monthIncome = save/100/12*procent;
-            alert("Доход с вашего депозита за месяц :" +  appData.monthIncome);
-    }
-}
-checkSavings();
-
-function detectDayBudget(){
-    
-}*/
-
-/*let user = {};
-  user.name = "John";
-  user.surname = "Smith";
-  
-  user.name = "Pete";
-  delete user.name;
-  console.log(user);
-*/ 
-  /*let obj = {
-      name: "Pavel",
-      age: 30,
-      weight: 123,
-  }; 
-  obj.name =20;
- 
-   let sum = 0;
-   for( let key in obj) {
-    console.log( sum = sum + obj[key]);
-}
- alert(sum);*/
-
-
- /*let obj = {      
-     money: 300,
-     rest:200,
-     name: 'Piter',
- };
-  
- function checkObject(obj) {
-     for( let key in obj) {
-         if( typeof(obj[key]) =='number') {
-            obj[key]*=2;
-         }
-     }
- }
-
- 
- checkObject(obj);
- console.log(obj);*/
- /*function sum(a,b) {
-     alert(a+b) ;
- } 
- sum(1,1);*/
- /*let salaries = {
-    John: 100,
-    Ann: 160,
-    Pete: 130
-  };
-  let sum = 0;
-  for( let key in salaries){
-      sum = sum + salaries[key]; 
-    
-  } 
-   alert(sum);
-let obj = {
-    width: 200,
-    height: 300,
-    title: "My menu"
-  };
-function multiplyNumeric(obj){
-    for(let key in obj){
-        if ( typeof(obj[key])==='number' ){
-            obj[key] = obj[key]*2;
-        }
-    }
-
-}
-multiplyNumeric(obj);
-console.log(obj);
-*/
 let numberOfFilms = prompt("Сколько фильмов, вы уже посмотрели?", "");
 let personalMovieDB = {
     count: numberOfFilms,
@@ -153,7 +9,7 @@ let personalMovieDB = {
     privat: false
 };
  
-    const a = prompt('Один из просмотренных фильмов?',''),
+   /* const a = prompt('Один из просмотренных фильмов?',''),
             b = prompt('На сколько оцените его?', ''),
             c = prompt('Один из просмотренных фильмов?',''),
             d= prompt('На сколько оцените его?', '');
@@ -161,4 +17,47 @@ let personalMovieDB = {
 
 personalMovieDB.movie[a] = b;
 personalMovieDB.movie[c] = d;
-console.log(personalMovieDB);
+console.log(personalMovieDB);*/
+/* Задание на урок:
+
+1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
+
+2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
+отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
+возвращаем пользователя к вопросам опять
+
+3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
+"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
+"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
+
+4) Потренироваться и переписать цикл еще двумя способами*/
+
+
+
+// Код возьмите из предыдущего домашнего задания
+for( let i=0; i<2; i++) {
+        const a = prompt('Один из просмотренных фильмов?',''),
+           b = prompt('На сколько оцените его?', '');
+        if( a != null && a != "" && b != null && b != "" && a.length < 50){
+            console.log("done");
+            personalMovieDB.movie[a] =b;
+        } else { console.log("error");
+            i--;
+
+        }
+}
+ if(personalMovieDB.count < 10){
+     console.log("Просмотрено довольно мало фильмов");
+ } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30){
+    console.log("Вы классический зритель");
+
+ } else if(personalMovieDB.count >= 30){
+    console.log("Вы киноман");
+
+ } else {
+    console.log("Произошла ошибка");
+
+ }
+ 
+ console.log(personalMovieDB);
+ 
